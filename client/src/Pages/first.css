@@ -1,0 +1,8 @@
+.first::first-letter{
+    color:rgb(44,184,210);
+    font-weight: bold;
+    font-size: 40px;
+}
+.first{
+    word-spacing: 1px;
+}
