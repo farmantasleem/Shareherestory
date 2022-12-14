@@ -12,7 +12,7 @@ const Story=()=>{
   const state=useSelector((state)=>{return state})
   const[story,setstory]=React.useState([])
   const[params,setparams]=useSearchParams();
-  const[page,setpage]=React.useState(params.get("page")||1)
+  const[page,setpage]=React.useState(1)
   const[maxpage,setmaxpage]=React.useState(1)
   const useparams=useParams()
   const result=params.get("result")
