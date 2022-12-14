@@ -19,7 +19,7 @@ export const Details = ({setreload,reload}) => {
     })
 
     const parsed_data=await resp.json();
-    setcart([...parsed_data.data]||[])
+    setcart(parsed_data.data||[])
   }
 
   React.useEffect(()=>{
@@ -32,13 +32,11 @@ export const Details = ({setreload,reload}) => {
            
               await getCart()
 
-              const resp=await fetch(`https://ill-jade-eel-gear.cyclic.app/order/items`,{
+              const resp=await fetch(`https://ill-jade-eel-gear.cyclic.app/order/${cart[0].product._id}`,{
                 method:"POST",
                 headers:{
                     "authorization":`bearer ${localStorage.getItem("JWT_TOKEN")}`
                   }
-                ,
-                body:JSON.stringify([...cart])
 
               })
 
