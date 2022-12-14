@@ -74,17 +74,13 @@ if(loading){
       }))
      }
     <HStack>
-      <Button disabled={1==page} onClick={()=>{
-        setpage((state)=>{
-           setparams({result,page:state==1?1:state-1}) 
-           return state==1?1:state-1})
+      <Button isDisabled={1==page} onClick={()=>{
+        setpage(page-1)
        
         }}>Prev</Button>
       <Button>{page}</Button>
-      <Button disabled={maxpage==page} onClick={()=>{
-        setpage((state)=>{
-          setparams({result,page:state==maxpage?state:state+1}) 
-          return state==maxpage?state:state+1})
+      <Button isDisabled={maxpage==page} onClick={()=>{
+        setpage(page+1)
       
         }}>Next</Button>
     </HStack>
