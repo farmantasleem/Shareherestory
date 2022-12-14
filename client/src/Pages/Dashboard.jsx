@@ -61,7 +61,7 @@ const getOrder=async()=>{
    })
    if(resp.status==200){
     const data_resp=await resp.json()
-    setorder(data_resp.data)
+    setorder(data_resp.data.reverse())
    }
 }
   useEffect(()=>{
