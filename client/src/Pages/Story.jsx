@@ -41,7 +41,7 @@ const maxpages=async()=>{
   getdata()
 
 
- },[result])
+ },[result,page])
 if(loading){
   return <Loading/>
 }
