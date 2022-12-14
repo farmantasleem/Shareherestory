@@ -20,14 +20,15 @@ const BookCard=({title,description,author,cost,img,id})=>{
       if(add_item.status==200){
         setcart(true)
         toast({
-          title: 'Added to cart Successfully',
+          title: 'Redirecting to Checkout Page',
           status: 'success',
           duration: 9000,
           isClosable: true,
         })
+        navigate("/checkout")
       }else{
         toast({
-          title: 'Login to add to cart',
+          title: 'Login to Buy',
           status: 'error',
           duration: 9000,
           isClosable: true,
@@ -69,11 +70,12 @@ const BookCard=({title,description,author,cost,img,id})=>{
   
       <CardFooter>
        <HStack gap="10px">
-       <Button onClick={()=>{navigate("/checkout")}}  variant='solid'  rightIcon={<ArrowForwardIcon />} bgColor="rgb(199,236,228)">
-        Buy Now
-        </Button>
+       
 
-        <Button rightIcon={<FiShare/>} onClick={()=>{addtocart()}}>{cart?"Added to cart":"Add To cart"}</Button>
+        <Button rightIcon={<ArrowForwardIcon />} onClick={()=>{
+     addtocart()
+          
+          }}>Buy Now</Button>
        </HStack>
 
       </CardFooter>

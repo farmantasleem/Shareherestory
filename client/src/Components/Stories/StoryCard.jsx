@@ -9,12 +9,12 @@ const StoryCard=({title,img,description,author,views})=>{
   let navigate=useNavigate()
     const[like,setlike]=useState(false)
     return<Card
-    direction={{ base: 'column', sm: 'row' }}
+    direction={{ base: 'column', md: 'row' }}
     overflow='hidden'
    p="10px"
    pl="20px"
     variant='outline'
-  minH="300px"
+  minH={{base:"600px",md:"300px"}}
   maxH="300px"
   minW="90%"
   maxW="90%"
@@ -53,7 +53,7 @@ const StoryCard=({title,img,description,author,views})=>{
           Read Story
         </Button>
         <Button rightIcon={like?<AiFillHeart/>:<AiOutlineHeart/>} onClick={()=>{setlike(!like)}}>{like?"Liked":"Like"}</Button>
-        <Button rightIcon={<FiShare/>}>Share</Button>
+       
        </HStack>
       </CardBody>
   

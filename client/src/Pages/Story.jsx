@@ -41,13 +41,13 @@ const maxpages=async()=>{
   getdata()
 
 
- },[result,getdata])
+ },[result])
 if(loading){
   return <Loading/>
 }
     return(
-<Container bgSize={"cover"} overflow="hidden" bgColor={{base:"white",md:"rgb(199,236,228)"}} maxW={"100%"} p="20px">
-        <Container  borderRadius="20px" maxW={{base:"100%",md:"80%"}} p="20px">
+<Container bgSize={"cover"} overflow="hidden" bgColor={{base:"white",md:"rgb(199,236,228)"}} maxW={"100%"} p={{base:"0px",md:"20px"}}>
+        <Container  borderRadius="20px" maxW={{base:"100%",md:"80%"}} p={{base:"0px",md:"20px"}}>
         <Tabs variant='soft-rounded' colorScheme='blue'>
   <TabList w="full" justifyContent={"center"} >
   <Tab ><Button onClick={()=>{
@@ -74,14 +74,14 @@ if(loading){
       }))
      }
     <HStack>
-      <Button onClick={()=>{
+      <Button disabled={1==page} onClick={()=>{
         setpage((state)=>{
            setparams({result,page:state==1?1:state-1}) 
            return state==1?1:state-1})
        
         }}>Prev</Button>
       <Button>{page}</Button>
-      <Button onClick={()=>{
+      <Button disabled={maxpage==page} onClick={()=>{
         setpage((state)=>{
           setparams({result,page:state==maxpage?state:state+1}) 
           return state==maxpage?state:state+1})
@@ -99,14 +99,14 @@ if(loading){
       }))
      }
     <HStack>
-      <Button onClick={()=>{
+      <Button disabled={1==page} onClick={()=>{
         setpage((state)=>{
            setparams({result,page:state==1?1:state-1}) 
            return state==1?1:state-1})
        
         }}>Prev</Button>
       <Button>{page}</Button>
-      <Button onClick={()=>{
+      <Button disabled={maxpage==page} onClick={()=>{
         setpage((state)=>{
           setparams({result,page:state==maxpage?state:state+1}) 
           return state==maxpage?state:state+1})

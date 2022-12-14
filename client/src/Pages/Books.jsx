@@ -1,13 +1,16 @@
-import { Container, Stack } from "@chakra-ui/react";
+import { Container, Stack,Button } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import BookCard from "../Components/Book/BookCard";
 import Loading from "./Loading";
+import {ArrowForwardIcon} from "@chakra-ui/icons"
 
 const Books=()=>{
     const state=useSelector((state)=>{return state})
     const[book,setbooks]=React.useState([])
     const[loading,setloading]=React.useState(true)
+    let navigate=useNavigate()
     const getbookdata=async()=>{
         const book=await fetch("https://ill-jade-eel-gear.cyclic.app/book/get");
         const bookresp=await book.json()
@@ -33,7 +36,9 @@ const Books=()=>{
             return <BookCard key={e._id} title={e.title} img={e.img} id={e._id} description={e.description} cost={e.cost} author={e.author}/>
         })
     }
-       
+       <Button onClick={()=>{navigate("/checkout")}}  variant='solid'  rightIcon={<ArrowForwardIcon />} bgColor="rgb(199,236,228)">
+       Checkout
+        </Button>
         </Stack>
 
     </Container>)

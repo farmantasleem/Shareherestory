@@ -8,7 +8,7 @@ import logo from "../../assets/logo.png"
 const Navbarsmall=()=>{
 
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const Navlinks=[{link:"Home",to:"/"},{link:"About",to:"/about"},{"link":"Story","to":"/story"}]
+  const Navlinks=[{link:"Home",to:"/"},{link:"About",to:"/about"},{"link":"Story","to":"/stories?result=mostviewed"}]
     const[cur,setcur]=React.useState(0)
     return(
     <HStack  bgColor="white" p="20px" justifyContent={"space-between"}>

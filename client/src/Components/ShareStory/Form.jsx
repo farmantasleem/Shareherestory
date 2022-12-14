@@ -15,7 +15,7 @@ const Form = ({storydata,setstorydata}) => {
         body:JSON.stringify(storydata)
     })
 
-    if(resp.status=="404"){
+    if(resp.status!="200"){
       alert("Can't be publish, Try Again")
     }else{
       alert("Publish Successfully")
