@@ -1,6 +1,6 @@
 ## SharehereStory
 
-:point_right: Visit the deployed website [here](https://treasury-trip.netlify.app)
+:point_right: Visit the deployed website [here](https://shareherestory.vercel.app/)
 
 ## Individual Project
 
