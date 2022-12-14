@@ -4,7 +4,7 @@ import { FormControl,  Select,Input, Stack, InputGroup, InputLeftAddon, Heading,
 import React from "react"
 import {MdAlternateEmail,MdCall,MdPersonOutline,MdDriveFileRenameOutline} from "react-icons/md"
 
-export const Details = ({setreload}) => {
+export const Details = ({setreload,reload}) => {
     const[details,setdetails]=React.useState({name:"",email:"",ph:"",gender:"male"})
 
     let toast=useToast()
@@ -19,24 +19,26 @@ export const Details = ({setreload}) => {
     })
 
     const parsed_data=await resp.json();
-    setcart(parsed_data.data||[])
+    setcart([...parsed_data.data]||[])
   }
 
   React.useEffect(()=>{
  
     getCart()
  
-  },[])
+  },[reload])
     const handlecheckout=async()=>{
         if(details.name.length>1&&details.email.length>1&&details.ph.length>0){
            
               await getCart()
 
-              const resp=await fetch(`https://ill-jade-eel-gear.cyclic.app/order/${cart[0].product._id}`,{
+              const resp=await fetch(`https://ill-jade-eel-gear.cyclic.app/order/items`,{
                 method:"POST",
                 headers:{
                     "authorization":`bearer ${localStorage.getItem("JWT_TOKEN")}`
                   }
+                ,
+                body:JSON.stringify([...cart])
 
               })
 
