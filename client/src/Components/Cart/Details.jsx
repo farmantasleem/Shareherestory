@@ -41,13 +41,14 @@ export const Details = ({setreload,reload}) => {
               })
 
               if(resp.status==200){
+                setreload(!reload)
                 toast({
                     title: 'Successfully Ordered',
                     status: 'success',
                     duration: 3000,
                     isClosable: true,
                   })
-                setreload((s)=>{return !s})
+             
               }else{
                 toast({
                     title: 'Try again',

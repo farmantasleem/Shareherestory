@@ -20,7 +20,7 @@ export const Cart = ({details,total,settotal}) => {
         if(details.name.length>1&&details.email.length>1&&details.ph.length>0){
             toast({
                 title: 'Success',
-                description: "Redirecting to ticket page",
+               
                 status: 'success',
                 duration: 3000,
                 isClosable: true,
