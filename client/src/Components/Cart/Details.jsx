@@ -19,7 +19,7 @@ export const Details = ({setreload,reload}) => {
     })
 
     const parsed_data=await resp.json();
-    setcart(parsed_data.data||[])
+    setcart([...parsed_data.data]||[])
   }
 
   React.useEffect(()=>{
