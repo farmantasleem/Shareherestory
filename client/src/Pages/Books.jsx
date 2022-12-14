@@ -36,9 +36,7 @@ const Books=()=>{
             return <BookCard key={e._id} title={e.title} img={e.img} id={e._id} description={e.description} cost={e.cost} author={e.author}/>
         })
     }
-       <Button onClick={()=>{navigate("/checkout")}}  variant='solid'  rightIcon={<ArrowForwardIcon />} bgColor="rgb(199,236,228)">
-       Checkout
-        </Button>
+     
         </Stack>
 
     </Container>)
