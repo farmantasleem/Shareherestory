@@ -39,7 +39,7 @@
 
 ## 5.User Dashboard
 
-<img src="client/src/assets/userdashboardpage.png">
+<img src="client/src/assets/userdashboardpage.jpg">
 
 <br/>
 
