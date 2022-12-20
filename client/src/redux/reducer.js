@@ -11,6 +11,9 @@ const storeReducer=(state=intialState,action)=>{
             case loginsuccess:{
                 return {...state,auth:true}
             }
+            case logout:{
+                return {...state,auth:false}
+            }
             default:
                 return state
                 

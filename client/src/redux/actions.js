@@ -1,4 +1,4 @@
-import { bookdata, commondata, getStory, loginsuccess } from "./actionType"
+import { bookdata, commondata, getStory, loginsuccess, logout } from "./actionType"
 
 export const GetStory=()=>{
     return {type:getStory}
@@ -14,4 +14,8 @@ export const Authenticated=()=>{
 
 export const getbooksdata=(data)=>{
     return {type:bookdata,payload:data}
+}
+
+export const logoutUser=()=>{
+    return {type:logout}
 }

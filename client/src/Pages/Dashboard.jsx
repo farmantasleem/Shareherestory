@@ -17,14 +17,18 @@ import Mystory from "../Components/Dashboard/Mystory";
 import {useNavigate} from "react-router-dom"
 import { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../redux/actions";
 export const Dashboard=()=>{
   const History=useNavigate()
+  const dispatch=useDispatch()
   const [mystory,setmystory]=useState([])
   const[cart,setcart]=useState([])
   const[reload,setreload]=useState(false)
   const[order,setorder]=useState([])
   const handlelogout=()=>{
     localStorage.removeItem("JWT_TOKEN")
+    dispatch(logoutUser())
     History("/")
     
   }
