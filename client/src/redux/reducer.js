@@ -1,4 +1,4 @@
-import { getStory,commondata,bookdata, loginsuccess } from "./actionType";
+import { getStory,commondata,bookdata, loginsuccess, logout } from "./actionType";
 
 
 const intialState={story:[],auth:false,books:[],userdata:{}}
