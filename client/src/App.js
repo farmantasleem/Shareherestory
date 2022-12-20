@@ -13,7 +13,7 @@ function App() {
   const token=localStorage.getItem("JWT_TOKEN");
   const dispatch=useDispatch()
   useEffect(()=>{
-      if(token){
+      if(token?.length>0){
         dispatch(Authenticated())
       }
   },[])
