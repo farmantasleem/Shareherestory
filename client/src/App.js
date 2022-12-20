@@ -7,10 +7,16 @@ import Home from './Pages/Home';
 import AllRoutes from './Routes/AllRoutes';
 import {useDispatch,useSelector} from "react-redux"
 
-import { GetCommonData, GetStory } from './redux/actions';
+import { Authenticated, GetCommonData, GetStory } from './redux/actions';
 import Footer from './Components/Footer/Footer';
 function App() {
-
+  const token=localStorage.getItem("JWT_TOKEN");
+  const dispatch=useDispatch()
+  useEffect(()=>{
+      if(token){
+        dispatch(Authenticated())
+      }
+  },[])
   return (
     // eslint-disable-next-line 
 
