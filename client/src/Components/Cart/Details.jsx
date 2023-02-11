@@ -30,9 +30,8 @@ export const Details = ({setreload,reload}) => {
     const handlecheckout=async()=>{
         if(details.name.length>1&&details.email.length>1&&details.ph.length>0){
            
-              await getCart()
 
-              const resp=await fetch(`https://ill-jade-eel-gear.cyclic.app/order/${cart[0].product._id}`,{
+              const resp=await fetch(`https://ill-jade-eel-gear.cyclic.app/order`,{
                 method:"POST",
                 headers:{
                     "authorization":`bearer ${localStorage.getItem("JWT_TOKEN")}`

@@ -7,6 +7,7 @@ import bg from "../assets/bg2.png"
 import { useSelector } from "react-redux";
 import { useSearchParams,useParams } from "react-router-dom";
 import Loading from "./Loading";
+import {io} from 'socket.io-client'
 
 const Story=()=>{
   const state=useSelector((state)=>{return state})
@@ -17,6 +18,7 @@ const Story=()=>{
   const useparams=useParams()
   const result=params.get("result")
   const[loading,setloading]=React.useState(true)
+  const socket=React.useRef(null)
 
 const maxpages=async()=>{
   const resp=await fetch("https://ill-jade-eel-gear.cyclic.app/story/all")
@@ -42,9 +44,13 @@ const maxpages=async()=>{
 
 
  },[page])
+
 if(loading){
   return <Loading/>
 }
+
+
+
     return(
 <Container bgSize={"cover"} overflow="hidden" bgColor={{base:"white",md:"rgb(199,236,228)"}} maxW={"100%"} p={{base:"0px",md:"20px"}}>
         <Container  borderRadius="20px" maxW={{base:"100%",md:"80%"}} p={{base:"0px",md:"20px"}}>

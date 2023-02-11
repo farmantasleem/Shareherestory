@@ -10,6 +10,19 @@ const BookCard=({title,description,author,cost,img,id})=>{
     const[cart,setcart]=useState(false)
     let navigate=useNavigate()
     const toast=useToast()
+    const[titleadd,settitle]=useState("Add to Cart")
+
+    const handleAdd=()=>{
+      if(titleadd=="Add to Cart"){
+        addtocart()
+      }else{
+        toast({
+         title: 'Already in Cart',
+         status: 'error',
+         duration: 9000,
+         isClosable: true,
+       })}
+    }
     const addtocart=async()=>{
       const add_item=await fetch(`https://ill-jade-eel-gear.cyclic.app/cart/${id}`,{
         "method":"POST",
@@ -20,12 +33,12 @@ const BookCard=({title,description,author,cost,img,id})=>{
       if(add_item.status==200){
         setcart(true)
         toast({
-          title: 'Redirecting to Checkout Page',
+          title: 'Added to cart',
           status: 'success',
           duration: 9000,
           isClosable: true,
         })
-        navigate("/checkout")
+        settitle("Added to cart")
       }else{
         toast({
           title: 'Login to Buy',
@@ -35,6 +48,8 @@ const BookCard=({title,description,author,cost,img,id})=>{
         })
       }
     }
+
+    
     return<Card
     direction={{ base: 'column', sm: 'row' }}
     overflow='hidden'
@@ -72,10 +87,7 @@ const BookCard=({title,description,author,cost,img,id})=>{
        <HStack gap="10px">
        
 
-        <Button rightIcon={<ArrowForwardIcon />} onClick={()=>{
-     addtocart()
-          
-          }}>Buy Now</Button>
+        <Button rightIcon={titleadd=="Add to Cart"?<ArrowForwardIcon />:""} disabled={!titleadd=="Add to Cart"} onClick={handleAdd}>{titleadd}</Button>
        </HStack>
 
       </CardFooter>

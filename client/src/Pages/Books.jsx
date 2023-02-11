@@ -29,6 +29,7 @@ const Books=()=>{
    if(loading){
     return <Loading/>
    }
+   const JWT_TOKEN=localStorage.getItem("JWT_TOKEN")
     return(<Container minW={"80vw"}>
         <Stack direction={"column"}>
     {
@@ -36,7 +37,7 @@ const Books=()=>{
             return <BookCard key={e._id} title={e.title} img={e.img} id={e._id} description={e.description} cost={e.cost} author={e.author}/>
         })
     }
-     
+     <Button hidden={!JWT_TOKEN} position={"fixed"} onClick={()=>{navigate("/checkout")}} zIndex="1001" _hover={{color:"white",bgColor:"black"}} bgColor="rgb(44,184,210)" color="white" bottom={{base:"40px",md:"20px"}} rightIcon={<ArrowForwardIcon />} right="30px">Checkout</Button>
         </Stack>
 
     </Container>)

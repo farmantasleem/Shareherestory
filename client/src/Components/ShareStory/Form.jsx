@@ -2,10 +2,14 @@ import { VStack, Input, Heading, Text, Textarea, Button, InputGroup, InputLeftAd
 import React from "react";
 import { FaUserCircle, FaPencilAlt } from "react-icons/fa"
 import {BiCategory} from "react-icons/bi"
+import { useRef } from "react";
+import {io} from "socket.io-client"
+import { useEffect } from "react";
 const Form = ({storydata,setstorydata}) => {
-
+const socket=useRef(null)
  
   const addstory=async()=>{
+   
     const resp=await fetch("https://ill-jade-eel-gear.cyclic.app/story/add",{
         method:"POST",
         headers:{
@@ -19,8 +23,22 @@ const Form = ({storydata,setstorydata}) => {
       alert("Can't be publish, Try Again")
     }else{
       alert("Publish Successfully")
+      socket.current.emit("send-msg",storydata)
+
     }
   }
+  React.useEffect(()=>{
+    socket.current=io("http://localhost:8001/")
+    socket.current.emit("add-user","farman");
+  
+  },[])
+
+  React.useEffect(()=>{
+    socket.current.on("msg-recieve",data=>{
+      
+      console.log(data)
+    })
+  })
   return (
     <VStack gap="5px" border="2px" borderColor={"rgb(51,63,85)"} p="20px" borderRadius={"15px"} bgColor={"white"} justifyContent={"left"} w="40%">
       <Heading color={"rgb(51,63,85)"} fontSize={"29px"}>Share Your Story,Today!</Heading>
