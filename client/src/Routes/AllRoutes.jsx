@@ -7,11 +7,10 @@ import { Dashboard } from "../Pages/Dashboard";
 import Faq from "../Pages/Faq";
 import Home from "../Pages/Home";
 import Loading from "../Pages/Loading";
-import Login from "../Pages/Login";
 import Read from "../Pages/Read";
 import ShareStory from "../Pages/ShareStory";
 import Story from "../Pages/Story";
-
+import Login from "../Pages/Login"
 const AllRoutes=()=>{
     return(
         <Routes>  
@@ -25,6 +24,7 @@ const AllRoutes=()=>{
             <Route path="/checkout" element={<Checkout/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/contact" element={<Loading/>}/>
+            <Route path="/login" element={<Login/>}/>
         </Routes>
     )
 }

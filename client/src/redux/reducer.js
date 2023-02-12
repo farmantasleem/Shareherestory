@@ -1,7 +1,7 @@
 import { getStory,commondata,bookdata, loginsuccess, logout } from "./actionType";
 
 
-const intialState={story:[],auth:false,books:[],userdata:{}}
+const intialState={story:[],auth:true,books:[],userdata:{}}
 
 const storeReducer=(state=intialState,action)=>{
         switch (action.type) {
