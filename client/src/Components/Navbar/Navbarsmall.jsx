@@ -72,7 +72,7 @@ const Navbarsmall = () => {
                 onClick={() => {
                   onClose();
                 }}
-                to="/login"
+                to={statedata.auth?"/dashboard":"/login"}
               >
                 {statedata.auth?"Dashboard":"Login"}
               </Link>

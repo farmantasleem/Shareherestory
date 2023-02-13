@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
+import { Authenticated } from "../redux/actions";
 
 
 const Login = () => {
@@ -15,14 +16,76 @@ const Login = () => {
   const toast=useToast()
 
   const dispatch=useDispatch()
-  const handleLogin=()=>{
-      // dispatch(loginUser(userData,toast))
+  const handleLogin=async()=>{
+    try{
+        const resp=await fetch("https://ill-jade-eel-gear.cyclic.app/user/login",{
+            method:"POST",
+           
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify({email:userData.email,password:userData.password})
+            
+        })
+        if(resp.status!="404"){
+            const dataresp=await resp.json();
+            localStorage.setItem("JWT_TOKEN",dataresp.token)
+            toast({
+                title: 'Login Successfull.',
+           
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+              dispatch(Authenticated())
+            
+              onClose()
+           
+        }else{
+            toast({
+                title: 'Wrong Credentials',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
+        }
+        
+      }catch(err){
+        alert("error"+err.message)
+      }
+}
+
+const handleSignup=async()=>{
+  try{
+    const resp=await fetch("https://ill-jade-eel-gear.cyclic.app/user/signup",{
+        method:"POST",
+        headers:{
+            "content-type":"application/json"
+        },
+        body:JSON.stringify(userData)
+    })
+    if(resp.status!="404"){
+        toast({
+            title: 'Account created successfully.',
+       
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
+    }else{
+        toast({
+            title: 'Account cannot be created',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          })
+    }
+    
+  }catch(err){
+    alert("error"+err.message)
   }
 
-  const handleRegister=()=>{
-    // dispatch(signupUser(userData,toast))
-
-  }
+}
 const navigate=useNavigate()
 
   return (
@@ -64,7 +127,7 @@ const navigate=useNavigate()
           <Input type="text" value={userData.password} onChange={(e)=>{setuserData({...userData,password:e.target.value})}} />
           
           
-          <Button mt="30px" minW="100%" onClick={handleRegister}>REGISTER</Button>
+          <Button mt="30px" minW="100%" onClick={handleSignup}>REGISTER</Button>
         
         </FormControl>
       </Center>
