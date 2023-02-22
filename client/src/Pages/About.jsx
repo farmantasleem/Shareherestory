@@ -24,7 +24,7 @@ mt="40px"
   <Image
     objectFit='cover'
     maxW={{ base: '100%', sm: '500px' }}
-    src='https://media-exp1.licdn.com/dms/image/C4D22AQFrUyHvgIVe1A/feedshare-shrink_1280/0/1669611444184?e=1672272000&v=beta&t=omv6Ey1wYNhhlzRl-I4z6ukO3B4ndmtQ0V-vmzzyQu8'
+    src='https://i.ibb.co/0Zfjbyz/1669611444184.jpg'
     alt='Caffe Latte'
   />
 
